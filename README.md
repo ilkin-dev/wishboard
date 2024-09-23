@@ -344,7 +344,7 @@ Response:
     - Store JWT in localStorage, remove when a user logs out
     - Add states for logged-in user to show the appropriate UI (e.g., displaying personal wishboards, collaborations features) based on mockups
 
-## Roadmap
+### Roadmap
 
 - Create client
     - react project structure with routes and basic boilerplate pages for the core functionality.
@@ -360,6 +360,7 @@ Response:
 
 - Deploy client and server projects so all commits will be reflected in production
 
+### Features
 - Feature: Wishboard Creation
     - Create a form that allows users to create new wishboards with details like title, description, and optional deadlines.
     - Store the wishboard data in the database and display it on the user's dashboard.
@@ -391,7 +392,7 @@ Response:
 
 - DEMO DAY
 
-## Nice-to-haves
+### Nice-to-haves
 
 - Integration with Google Calendar
     - Allow users to set reminders for goal deadlines, syncing them with Google Calendar or similar tools.
