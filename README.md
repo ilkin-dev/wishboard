@@ -1,5 +1,4 @@
-# Project Title
-**Wish Board**
+# Wish Board
 
 ## Overview
 
