@@ -1,0 +1,31 @@
+.btn {
+  padding: space(1) space(2);
+  @include border-radius(0.5rem);
+  font-family: $primary-font;
+  font-size: $font-size-md;
+  cursor: pointer;
+  @include transition(background-color, 0.3s);
+
+  &--primary {
+    background-color: $primary-bg;
+    color: $primary-text;
+
+    &:hover {
+      background-color: lighten($primary-bg, 10%);
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-bg;
+    color: $primary-text;
+
+    &:hover {
+      background-color: lighten($secondary-bg, 10%);
+    }
+  }
+
+  &--disabled {
+    background-color: $disabled-bg;
+    cursor: not-allowed;
+  }
+}

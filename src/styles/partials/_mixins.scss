@@ -1,0 +1,33 @@
+// Flexbox centering
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Grid layout generator
+@mixin grid-layout($columns, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Transitions
+@mixin transition($property: all, $duration: 0.3s, $easing: ease-in-out) {
+  transition: $property $duration $easing;
+}
+
+// Box shadows
+@mixin box-shadow($level: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)) {
+  box-shadow: $level;
+}
+
+// Border-radius
+@mixin border-radius($radius: 0.5rem) {
+  border-radius: $radius;
+}
+
+// Spacing helper
+@mixin spacing($property, $multiplier) {
+  #{$property}: space($multiplier);
+}

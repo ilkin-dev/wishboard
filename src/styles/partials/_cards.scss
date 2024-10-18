@@ -1,0 +1,35 @@
+.card {
+  background-color: $neutral-light;
+  padding: space(3);
+  @include apply-shadow($shadow-light);
+  @include border-radius(0.5rem);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    @include apply-shadow($shadow-medium);
+    transform: translateY(-0.25rem);
+  }
+
+  &__header {
+    font-family: $primary-font;
+    font-size: $font-size-lg;
+    margin-bottom: space(2);
+    color: $neutral-dark;
+  }
+
+  &__body {
+    font-family: $secondary-font;
+    font-size: $font-size-md;
+    color: $neutral-muted;
+    line-height: $line-height-normal;
+  }
+
+  &__footer {
+    margin-top: space(3);
+    text-align: right;
+
+    .btn {
+      @extend .btn--primary;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $z-index-modal;
+}
+
+.modal__content {
+  background-color: $neutral-light;
+  padding: space(4);
+  @include border-radius(0.5rem);
+  @include apply-shadow($shadow-medium);
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 0.3s ease-out;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 90%;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: space(1);
+  right: space(1);
+  font-size: $font-size-lg;
+  cursor: pointer;
+  color: $neutral-muted;
+
+  &:hover {
+    color: $highlight-color;
+  }
+}

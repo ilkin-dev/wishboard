@@ -1,0 +1,25 @@
+// Font families
+$primary-font: "Roboto", sans-serif;
+$secondary-font: "Open Sans", sans-serif;
+
+// Font sizes (using rem for flexibility)
+$font-size-xs: 0.875rem; // 14px
+$font-size-sm: 1rem; // 16px
+$font-size-md: 1.125rem; // 18px
+$font-size-lg: 1.25rem; // 20px
+$font-size-xl: 2.25rem; // 36px
+$font-size-xxl: 3.5rem; // 56px
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-normal: 1.5;
+$line-height-heading: 1.2;
+
+// Font utilities
+@mixin font-size($size) {
+  font-size: $size;
+}

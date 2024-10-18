@@ -1,0 +1,12 @@
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+@mixin spacing($property, $size) {
+  #{$property}: $size;
+}
+
+// Usage:
+// .element { @include spacing(margin-top, $spacing-lg); }

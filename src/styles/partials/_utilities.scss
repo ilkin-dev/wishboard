@@ -1,0 +1,25 @@
+// Flexbox utilities
+.flex {
+  display: flex;
+}
+.flex-center {
+  @include flex-center;
+}
+
+// Text utilities
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Position utilities
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}

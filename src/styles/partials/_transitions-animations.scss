@@ -1,0 +1,58 @@
+// Smooth transitions
+@mixin transition($property: all, $duration: 0.3s, $easing: ease-in-out) {
+  transition: $property $duration $easing;
+}
+
+// Hover transition
+@mixin hover-transition(
+  $property: background-color,
+  $duration: 0.3s,
+  $easing: ease-in-out
+) {
+  &:hover {
+    @include transition($property, $duration, $easing);
+  }
+}
+
+// Fade-in and fade-out animations
+@mixin fade-in($duration: 0.5s) {
+  animation: fadeIn $duration ease-in;
+}
+
+@mixin fade-out($duration: 0.5s) {
+  animation: fadeOut $duration ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+// Slide-up animation
+@mixin slide-up($duration: 0.5s) {
+  animation: slideUp $duration ease-in;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
