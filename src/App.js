@@ -1,9 +1,13 @@
 import './App.css';
+import HomePage from './pages/HomePage/HomePage';
+import GoogleAuthProviderWrapper from './context/GoogleAuthProvider';
 
 function App() {
   return (
     <div className="App">
-      <h1>HELLO</h1>
+      <GoogleAuthProviderWrapper>
+        <HomePage />
+      </GoogleAuthProviderWrapper>
     </div>
   );
 }
