@@ -1,0 +1,89 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/animations" as *;
+@use "../../styles/components" as *;
+
+.boards-section {
+  padding: $spacing-xxl 0;
+  background-color: $background-light;
+  text-align: center;
+
+  &__heading {
+    @include heading-style($font-size-xxl, $line-height-lg);
+    color: $brand-primary;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+
+    @include md-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-xl;
+    }
+  }
+
+  &__card {
+    @include card-layout;
+    background-color: $neutral-white;
+    text-align: left;
+    border-radius: $border-radius-md;
+    transition: transform $animation-fast ease-in-out;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba($neutral-black, 0.2);
+    }
+
+    &__thumbnail {
+      height: 150px;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: $spacing-md;
+      border-radius: 8px;
+    }
+
+    &__title {
+      @include heading-style($font-size-lg, $line-height-md, $font-weight-bold);
+      color: $brand-primary;
+      margin-bottom: $spacing-sm;
+    }
+
+    &__username {
+      font-size: $font-size-sm;
+      font-style: italic;
+      color: $text-muted;
+      margin-bottom: $spacing-sm;
+    }
+
+    &__dates {
+      font-size: $font-size-xs;
+      color: $text-secondary;
+      margin-bottom: $spacing-md;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &__progress-bar {
+      background-color: $background-light;
+      height: 8px;
+      width: 100%;
+      border-radius: $border-radius-sm;
+      overflow: hidden;
+
+      &__fill {
+        background-color: $brand-primary;
+        height: 100%;
+        width: 60%;
+        transition: width 0.3s ease;
+      }
+    }
+  }
+}
