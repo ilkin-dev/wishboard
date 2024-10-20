@@ -1,0 +1,41 @@
+@use "../../styles/typography" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/breakpoints" as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  //   &__image {
+  //     width: 40px;
+  //     height: 40px;
+  //     margin-right: $spacing-xs;
+
+  //     @include lg-up {
+  //       width: 50px;
+  //       height: 50px;
+  //     }
+  //   }
+
+  &__text {
+    font-family: $font-family-primary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $brand-secondary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $hover-secondary;
+    }
+
+    @include lg-up {
+      font-size: $font-size-xl;
+    }
+  }
+}
