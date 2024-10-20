@@ -1,0 +1,34 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/components" as *;
+
+.cta {
+  display: flex;
+  gap: $spacing-sm;
+
+  @include md-up {
+    gap: $spacing-md;
+  }
+
+  &__button {
+    @include button-primary;
+
+    &--login {
+      background-color: $brand-tertiary;
+
+      &:hover {
+        background-color: $hover-tertiary;
+      }
+    }
+
+    &--create-board {
+      background-color: $brand-secondary;
+
+      &:hover {
+        background-color: $hover-secondary;
+      }
+    }
+  }
+}
