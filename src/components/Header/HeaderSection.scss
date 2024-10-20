@@ -5,8 +5,9 @@
 
 .header {
   background-color: $brand-primary;
-  padding: $spacing-sm 0;
+  padding: $spacing-md $spacing-lg;
   box-shadow: 0 2px 5px rgba($neutral-black, 0.1);
+  color: $neutral-white;
 
   &__container {
     @include container;
