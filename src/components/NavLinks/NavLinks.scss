@@ -15,13 +15,13 @@
 
   &__link {
     @include link-style;
-    color: #ffffff;
+    color: $neutral-white;
     text-decoration: none;
     font-size: $font-size-md;
     transition: color 0.3s ease;
 
     &:hover {
-      color: $hover-secondary;
+      color: $highlight-primary;
     }
   }
 

@@ -91,11 +91,11 @@ p {
   font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f3d250;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 .logo__text:hover {
-  color: #f0c620;
+  color: #e7bb10;
 }
 @media (min-width: 992px) {
   .logo__text {

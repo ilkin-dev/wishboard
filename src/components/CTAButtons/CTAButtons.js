@@ -35,7 +35,7 @@ const CTAButtons = () => {
                 Login
             </Button>
             <Button
-                type="tertiary"
+                type="secondary"
                 size="medium"
                 onClick={handleCreateBoardClick}
             >
