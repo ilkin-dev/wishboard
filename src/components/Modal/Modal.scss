@@ -1,0 +1,28 @@
+@use "../../styles/components" as *;
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+
+.modal-overlay {
+  @include modal-overlay;
+}
+
+.modal-content {
+  @include modal-content;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-close {
+  @include button-close;
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+}
+
+.modal-info {
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-md;
+  color: $text-secondary;
+}
