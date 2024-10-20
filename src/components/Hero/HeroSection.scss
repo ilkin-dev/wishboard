@@ -1,0 +1,55 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/components" as *;
+
+.hero {
+  padding: $spacing-xl 0;
+  background-color: $brand-quaternary;
+  color: $neutral-white;
+  text-align: center;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: $spacing-lg;
+  }
+
+  &__heading {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    color: $neutral-white;
+  }
+
+  &__subheading {
+    font-size: $font-size-lg;
+    color: $neutral-light;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__cta {
+    @include button-layout;
+    @include button-primary;
+    margin-top: $spacing-lg;
+    font-size: $font-size-lg;
+    background-color: $brand-secondary;
+
+    &:hover {
+      background-color: $hover-secondary;
+    }
+  }
+
+  @include md-up {
+    padding: $spacing-xxl 0;
+
+    &__heading {
+      font-size: $font-size-xxl;
+    }
+
+    &__cta {
+      font-size: $font-size-xl;
+    }
+  }
+}

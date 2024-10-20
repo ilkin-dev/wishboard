@@ -1,11 +1,13 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
+import HeaderSection from '../../components/Header/HeaderSection';
+import HeroSection from '../../components/Hero/HeroSection';
 
 const Homepage = () => {
 
     return (
         <>
-            <Header />
+            <HeaderSection />
+            <HeroSection />
         </>
     );
 };
