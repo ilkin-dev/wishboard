@@ -1,0 +1,50 @@
+@use "../../styles/components" as components;
+@use "../../styles/colors" as colors;
+@use "../../styles/spacing" as spacing;
+@use "../../styles/typography" as typography;
+@use "../../styles/animations" as animations;
+
+.btn {
+  @include components.button-layout;
+  @include components.button-typography;
+
+  // Type Variants
+  &--primary {
+    @include components.button-primary;
+  }
+
+  &--secondary {
+    @include components.button-secondary;
+  }
+
+  &--tertiary {
+    @include components.button-tertiary;
+  }
+
+  // Size Variants
+  &--small {
+    @include components.button-small;
+  }
+
+  &--medium {
+    @include components.button-medium;
+  }
+
+  &--large {
+    @include components.button-large;
+  }
+
+  // Variant Styles
+  &--outlined {
+    @include components.button-outlined;
+  }
+
+  &--text {
+    @include components.button-text;
+  }
+
+  // Disabled State
+  &--disabled {
+    @include components.button-disabled;
+  }
+}
