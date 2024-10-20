@@ -1,0 +1,146 @@
+// Animation Durations
+$animation-fast: 0.3s;
+$animation-normal: 0.6s;
+$animation-slow: 1.2s;
+
+// Easing Functions
+$easing-linear: linear;
+$easing-ease-in: ease-in;
+$easing-ease-out: ease-out;
+$easing-ease-in-out: ease-in-out;
+$easing-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$easing-elastic: cubic-bezier(0.42, 0, 0.58, 1);
+
+// Keyframe Animations
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+// Animation Mixins
+@mixin fade-in($duration: $animation-normal, $easing: $easing-ease-in-out) {
+  animation: fadeIn $duration $easing;
+}
+
+@mixin fade-out($duration: $animation-normal, $easing: $easing-ease-in-out) {
+  animation: fadeOut $duration $easing;
+}
+
+@mixin bounce($duration: $animation-normal, $easing: $easing-bounce) {
+  animation: bounce $duration $easing;
+}
+
+@mixin slide-in-bottom(
+  $duration: $animation-normal,
+  $easing: $easing-ease-in-out
+) {
+  animation: slideInBottom $duration $easing;
+}
+
+@mixin slide-in-top(
+  $duration: $animation-normal,
+  $easing: $easing-ease-in-out
+) {
+  animation: slideInTop $duration $easing;
+}
+
+@mixin rotate($duration: $animation-normal, $easing: $easing-linear) {
+  animation: rotate $duration $easing infinite;
+}
+
+@mixin zoom-in($duration: $animation-normal, $easing: $easing-ease-in-out) {
+  animation: zoomIn $duration $easing;
+}

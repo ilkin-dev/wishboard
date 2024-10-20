@@ -1,0 +1,136 @@
+@use "./colors" as *;
+
+// Font Families
+$font-family-primary: "Roboto", sans-serif;
+$font-family-secondary: "Lora", serif;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// Font Sizes
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+
+// Line Heights
+$line-height-xs: 1.2;
+$line-height-sm: 1.4;
+$line-height-md: 1.5;
+$line-height-lg: 1.75;
+$line-height-xl: 2;
+
+// Letter Spacing
+$letter-spacing-tight: -0.5px;
+$letter-spacing-normal: 0px;
+$letter-spacing-wide: 0.5px;
+
+// Heading Styles
+$heading-font-family: $font-family-secondary;
+$heading-font-weight: $font-weight-bold;
+$heading-line-height: $line-height-md;
+$heading-color: $text-primary;
+
+// Paragraph Styles
+$paragraph-font-family: $font-family-primary;
+$paragraph-font-size: $font-size-md;
+$paragraph-line-height: $line-height-md;
+$paragraph-color: $text-secondary;
+
+// Global Typography
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  line-height: $line-height-md;
+  color: $text-primary;
+}
+
+// Heading Mixins
+@mixin heading-style(
+  $size,
+  $line-height,
+  $weight: $heading-font-weight,
+  $spacing: $letter-spacing-normal
+) {
+  font-family: $heading-font-family;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  color: $heading-color;
+}
+
+// Responsive Typography Mixins
+@mixin responsive-heading($size-md, $size-lg, $size-xl) {
+  font-size: $size-md;
+
+  @include md-up {
+    font-size: $size-lg;
+  }
+
+  @include lg-up {
+    font-size: $size-xl;
+  }
+}
+
+// Paragraph Mixins
+@mixin paragraph-style(
+  $size: $paragraph-font-size,
+  $line-height: $paragraph-line-height,
+  $spacing: $letter-spacing-normal
+) {
+  font-family: $paragraph-font-family;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $spacing;
+  color: $paragraph-color;
+}
+
+// Heading Styles
+h1 {
+  @include heading-style($font-size-xxl, $line-height-xl);
+}
+
+h2 {
+  @include heading-style($font-size-xl, $line-height-lg);
+}
+
+h3 {
+  @include heading-style($font-size-lg, $line-height-md);
+}
+
+h4 {
+  @include heading-style($font-size-md, $line-height-md, $font-weight-medium);
+}
+
+h5 {
+  @include heading-style($font-size-sm, $line-height-sm, $font-weight-regular);
+}
+
+h6 {
+  @include heading-style($font-size-xs, $line-height-xs, $font-weight-light);
+}
+
+// Paragraph Styles
+p {
+  @include paragraph-style();
+}
+
+// Text Helpers
+.text-primary {
+  color: $text-primary;
+}
+
+.text-secondary {
+  color: $text-secondary;
+}
+
+.text-muted {
+  color: $text-muted;
+}

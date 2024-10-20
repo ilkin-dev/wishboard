@@ -1,0 +1,51 @@
+// Core Colors
+$brand-primary: #f78888; // Main accent color (Red/Pinkish)
+$brand-secondary: #f3d250; // Secondary color (Yellow)
+$brand-tertiary: #90ccf4; // Third core color (Blue)
+$brand-quaternary: #5da2d5; // Darker accent color (Darker Blue)
+$background-main: #ececec; // Light background color
+
+// Neutral Colors
+$neutral-light: #f4f4f4;
+$neutral-medium: #cccccc;
+$neutral-dark: #333333;
+$neutral-white: #ffffff;
+$neutral-black: #000000;
+
+// Text Colors
+$text-primary: $neutral-black;
+$text-secondary: $neutral-dark;
+$text-muted: #757575;
+
+// Background Colors
+$background-light: $neutral-light;
+$background-dark: $neutral-dark;
+$background-base: $background-main;
+
+// Border Colors
+$border-light: $neutral-medium;
+$border-dark: $neutral-dark;
+
+// Accent Colors
+$highlight-primary: $brand-secondary;
+$highlight-secondary: $brand-quaternary;
+$muted-accent: #999999;
+
+// Hover & Active States
+$hover-primary: darken($brand-primary, 10%);
+$hover-secondary: darken($brand-secondary, 10%);
+$hover-tertiary: darken($brand-tertiary, 10%);
+$hover-neutral: darken($neutral-light, 10%);
+$hover-border: darken($border-light, 5%);
+
+// Disabled Colors
+$disabled-bg: $neutral-light;
+$disabled-text: #bdbdbd;
+
+// Overlay Colors
+$overlay-light: rgba($neutral-white, 0.7);
+$overlay-dark: rgba($neutral-black, 0.5);
+
+// Transparent Colors
+$transparent-light: rgba($neutral-white, 0.8);
+$transparent-dark: rgba($neutral-black, 0.7);

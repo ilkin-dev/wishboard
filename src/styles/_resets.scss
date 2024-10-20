@@ -1,0 +1,121 @@
+@use "./colors" as *;
+@use "./typography" as *;
+@use "./spacing" as *;
+
+// Reset common elements to ensure consistent styling across browsers
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 100%; // 16px default (1rem = 16px)
+  line-height: $line-height-md;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-md;
+  color: $text-primary;
+  background-color: $background-base;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $hover-primary;
+  }
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+  border: none;
+  background: none;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Remove list styling
+ul,
+ol {
+  list-style: none;
+}
+
+// Form elements reset
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  appearance: none;
+  border-radius: 0;
+  background-color: $background-light;
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid $border-light;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $brand-primary;
+  }
+}
+
+// Reset tables
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Blockquote reset
+blockquote,
+q {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: "";
+    content: none;
+  }
+}
+
+// Figure reset
+figure {
+  margin: 0;
+}
+
+// Remove all animations/transitions for people who have them disabled in browser settings
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

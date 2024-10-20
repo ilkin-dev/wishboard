@@ -1,0 +1,206 @@
+@use "colors" as *;
+@use "spacing" as *;
+@use "typography" as *;
+@use "breakpoints" as *;
+@use "animations" as *;
+
+// Header Layout
+@mixin header-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  background-color: $brand-primary;
+  color: $neutral-white;
+
+  @include md-up {
+    padding: $spacing-lg $spacing-xl;
+  }
+}
+
+// Button Layout Mixin
+@mixin button-layout {
+  display: inline-block;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color $animation-fast ease-in-out;
+}
+
+// Button Typography
+@mixin button-typography {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+// Button Variants
+@mixin button-primary {
+  background-color: $brand-primary;
+  color: $neutral-white;
+  &:hover {
+    background-color: $hover-primary;
+  }
+  &:active {
+    background-color: $brand-primary;
+    @include bounce;
+  }
+}
+
+@mixin button-secondary {
+  background-color: $brand-secondary;
+  color: $neutral-white;
+  &:hover {
+    background-color: $hover-secondary;
+  }
+}
+
+@mixin button-tertiary {
+  background-color: $brand-tertiary;
+  color: $neutral-white;
+  &:hover {
+    background-color: $hover-tertiary;
+  }
+}
+
+// Button Sizes
+@mixin button-small {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-sm;
+}
+
+@mixin button-medium {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-md;
+}
+
+@mixin button-large {
+  padding: $spacing-md $spacing-lg;
+  font-size: $font-size-lg;
+}
+
+// Outlined and Text Variants
+@mixin button-outlined {
+  background-color: transparent;
+  border: 2px solid $brand-primary;
+  color: $brand-primary;
+  &:hover {
+    background-color: $hover-primary;
+    color: $neutral-white;
+  }
+}
+
+@mixin button-text {
+  background-color: transparent;
+  color: $brand-primary;
+  &:hover {
+    color: $hover-primary;
+  }
+}
+
+// Disabled Button
+@mixin button-disabled {
+  background-color: $disabled-bg;
+  color: $disabled-text;
+  cursor: not-allowed;
+}
+
+// Close Button for Modals
+@mixin button-close {
+  background-color: transparent;
+  border: none;
+  font-size: $font-size-lg;
+  cursor: pointer;
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  color: $neutral-dark;
+
+  &:hover {
+    color: $highlight-primary;
+  }
+}
+
+// Card Layout
+@mixin card-layout {
+  background-color: $neutral-white;
+  border: 1px solid $border-light;
+  padding: $spacing-lg;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba($neutral-black, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 6px 12px rgba($neutral-black, 0.15);
+  }
+}
+
+// Modal Layout
+@mixin modal-layout {
+  background-color: $neutral-white;
+  padding: $spacing-lg;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba($neutral-black, 0.2);
+  animation: fadeIn $animation-normal $easing-ease-in-out;
+}
+
+// Container Mixin for Responsive Layouts
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  padding-left: $spacing-sm;
+  padding-right: $spacing-sm;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include md-up {
+    padding-left: $spacing-md;
+    padding-right: $spacing-md;
+  }
+
+  @include lg-up {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+}
+
+@mixin link-style {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $brand-primary;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    color: $hover-primary;
+  }
+}
+
+@mixin modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin modal-content {
+  background-color: $background-light;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+@mixin button-close {
+  border: none;
+  background: transparent;
+  font-size: $font-size-lg;
+  cursor: pointer;
+}
