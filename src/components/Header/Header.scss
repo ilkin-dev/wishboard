@@ -1,0 +1,72 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/components" as *;
+
+.header {
+  background-color: $brand-primary;
+  padding: $spacing-sm 0;
+  box-shadow: 0 2px 5px rgba($neutral-black, 0.1);
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  // Navigation styles
+  &__nav {
+    display: none;
+    @include md-up {
+      display: flex;
+      align-items: center;
+    }
+
+    &--open {
+      display: block;
+      position: absolute;
+      top: 135%;
+      right: 0;
+      left: 0;
+      background-color: $background-base;
+      padding: $spacing-md;
+      animation: slideIn 0.3s ease forwards;
+      box-shadow: 0 4px 10px rgba($neutral-black, 0.1);
+      z-index: 100;
+    }
+  }
+
+  // CTA buttons are hidden on mobile and shown on larger screens
+  .header__cta {
+    display: none;
+    @include md-up {
+      display: flex;
+      gap: $spacing-md;
+    }
+  }
+
+  // Hamburger menu styles for mobile
+  &__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
+    @include md-up {
+      display: none;
+    }
+
+    &-line {
+      width: 100%;
+      height: 3px;
+      background-color: $neutral-white;
+    }
+  }
+}
