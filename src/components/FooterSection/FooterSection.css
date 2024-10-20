@@ -1,12 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Mate:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Laila:wght@300;400;500;600;700&family=Mate:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap");
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Exo", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #000000;
 }
 
 h1 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 2rem;
   line-height: 2;
   font-weight: 700;
@@ -15,7 +17,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 1.5rem;
   line-height: 1.75;
   font-weight: 700;
@@ -24,7 +26,7 @@ h2 {
 }
 
 h3 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 1.25rem;
   line-height: 1.5;
   font-weight: 700;
@@ -33,7 +35,7 @@ h3 {
 }
 
 h4 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 500;
@@ -42,7 +44,7 @@ h4 {
 }
 
 h5 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 0.875rem;
   line-height: 1.4;
   font-weight: 400;
@@ -51,7 +53,7 @@ h5 {
 }
 
 h6 {
-  font-family: "Lora", serif;
+  font-family: "Laila", serif;
   font-size: 0.75rem;
   line-height: 1.2;
   font-weight: 300;
@@ -60,7 +62,7 @@ h6 {
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Exo", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0px;
@@ -218,7 +220,7 @@ p {
   list-style: none;
 }
 .footer__nav__link {
-  font-family: "Roboto", sans-serif;
+  font-family: "Exo", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #f78888;
