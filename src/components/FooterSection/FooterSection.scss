@@ -1,0 +1,87 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/components" as *;
+
+.footer {
+  padding: $spacing-lg 0;
+  background-color: $neutral-dark;
+  color: $neutral-white;
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @include md-up {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__logo {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    a {
+      color: $neutral-white;
+      text-decoration: none;
+      &:hover {
+        color: $highlight-primary;
+      }
+    }
+  }
+
+  &__nav {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-sm;
+    }
+
+    &__item {
+      list-style: none;
+    }
+
+    &__link {
+      @include link-style;
+      color: $neutral-white;
+      &:hover {
+        color: $highlight-primary;
+      }
+    }
+  }
+
+  &__socials {
+    &__list {
+      display: flex;
+      gap: $spacing-sm;
+    }
+
+    &__item {
+      list-style: none;
+    }
+
+    &__link {
+      font-size: $font-size-lg; // Adjust the size of the icons
+      color: $neutral-white;
+      &:hover {
+        color: $highlight-primary;
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: $font-size-sm;
+    margin-top: $spacing-md;
+
+    @include md-up {
+      margin-top: 0;
+    }
+
+    p {
+      color: $neutral-white;
+    }
+  }
+}
