@@ -1,8 +1,11 @@
 @use "./colors" as *;
 
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Mate:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Laila:wght@300;400;500;600;700&family=Mate:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap");
+
 // Font Families
-$font-family-primary: "Roboto", sans-serif;
-$font-family-secondary: "Lora", serif;
+$font-family-primary: "Exo", sans-serif;
+$font-family-secondary: "Laila", serif;
 
 // Font Weights
 $font-weight-light: 300;
