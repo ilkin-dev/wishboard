@@ -6,57 +6,85 @@
 .board-card {
   background-color: $neutral-white;
   border-radius: $border-radius-lg;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: $spacing-md;
-  margin: $spacing-md;
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   &__thumbnail {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    height: 150px;
   }
 
-  &__content {
-    padding: $spacing-md;
-  }
+  &__info {
+    padding: $spacing-lg;
 
-  &__title {
-    @include heading-style($font-size-lg, $line-height-md);
-    color: $text-primary;
-    margin-bottom: $spacing-sm;
-  }
+    &__title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+      margin-bottom: $spacing-sm;
+    }
 
-  &__username {
-    @include paragraph-style;
-    color: $text-secondary;
-    margin-bottom: $spacing-sm;
-  }
+    &__user {
+      font-size: $font-size-md;
+      color: $text-secondary;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
 
-  &__dates {
-    font-size: $font-size-sm;
-    color: $text-muted;
-    margin-bottom: $spacing-md;
+      .board-card__icon {
+        color: $highlight-primary;
+      }
+    }
+
+    &__dates {
+      margin-top: $spacing-md;
+      display: flex;
+      justify-content: space-between;
+      font-size: $font-size-sm;
+      color: $text-muted;
+
+      &__block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__label {
+          font-weight: $font-weight-medium;
+          color: $text-primary;
+          font-size: $font-size-sm;
+        }
+
+        &__created,
+        &__deadline {
+          font-size: $font-size-sm;
+          font-style: italic;
+          color: $text-muted;
+        }
+      }
+    }
   }
 
   &__progress {
-    background-color: $neutral-light;
-    height: 8px;
-    border-radius: $border-radius-sm;
-    overflow: hidden;
+    padding: $spacing-md;
 
-    &-bar {
-      background-color: $brand-primary;
-      height: 100%;
-      transition: width 0.3s ease;
+    &__bar {
+      height: 8px;
+      background-color: $neutral-light;
+      border-radius: $border-radius-sm;
+      overflow: hidden;
+
+      &__fill {
+        height: 100%;
+        background-color: $brand-primary;
+        border-radius: inherit;
+      }
     }
   }
 }

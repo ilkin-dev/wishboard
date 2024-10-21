@@ -4,6 +4,7 @@ import React from 'react';
 import GoogleAuthProviderWrapper from './context/GoogleAuthProvider';
 import Modal from './components/Modal/Modal';
 import { ModalProvider } from './context/ModalContext';
+import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
 
 function App() {
 
@@ -11,11 +12,12 @@ function App() {
     <div className="App">
       <GoogleAuthProviderWrapper>
         <ModalProvider>
-          <HomePage />
-          <Modal />
+          <Router>
+            <HomePage />
+            <Modal />
+          </Router>
         </ModalProvider>
       </GoogleAuthProviderWrapper>
-
     </div>
   );
 }
