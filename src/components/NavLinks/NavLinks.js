@@ -1,9 +1,11 @@
 import React from 'react';
 import './NavLinks.scss';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 import { GoogleLogin } from '@react-oauth/google';
 
 const NavLinks = () => {
+    const location = useLocation();
     const { openModal } = useModal();
 
     const handleDashboardClick = (e) => {
@@ -20,15 +22,19 @@ const NavLinks = () => {
         <nav className="nav">
             <ul className="nav__list">
                 <li className="nav__item">
-                    <a href="/about" className="nav__link">About</a>
+                    <NavLink to="/about" className="nav__link" activeClassName="active">
+                        About
+                    </NavLink>
                 </li>
                 <li className="nav__item">
-                    <a href="/explore" className="nav__link">Explore</a>
+                    <NavLink to="/explore" className="nav__link" activeClassName="active">
+                        Explore
+                    </NavLink>
                 </li>
                 <li className="nav__item">
-                    <a href="/dashboard" className="nav__link" onClick={handleDashboardClick}>
+                    <NavLink to="/dashboard" className="nav__link" activeClassName="active">
                         Dashboard
-                    </a>
+                    </NavLink>
                 </li>
             </ul>
         </nav>

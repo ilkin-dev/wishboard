@@ -3,6 +3,7 @@ import './BoardsSection.scss';
 import BoardCard from "../BoardCard/BoardCard";
 import fitnessImage from '../../assets/images/fitness.jpg';
 import travelImage from '../../assets/images/travel.jpg';
+import { NavLink } from "react-router-dom";
 
 const boards = [
     {
@@ -60,9 +61,9 @@ const BoardsSection = () => {
                 {boards.map((board) => (
                     <BoardCard key={board.id} board={board} />
                 ))}
-                <div className="boards-section__show-more">
+                <NavLink to={"/explore"} className="boards-section__show-more" activeClassName="nav__link--active">
                     Show More
-                </div>
+                </NavLink>
             </div>
         </section>
     );

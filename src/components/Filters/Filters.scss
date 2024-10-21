@@ -1,0 +1,64 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/breakpoints" as *;
+@use "../../styles/components" as *;
+
+.filters {
+  background-color: $neutral-white;
+  padding: $spacing-md;
+  margin-bottom: $spacing-lg;
+  border-radius: $border-radius-md;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+
+  @include md-up {
+    padding: $spacing-lg;
+  }
+
+  // Input text field
+  &__search {
+    flex-grow: 1;
+    input[type="text"] {
+      padding: $spacing-sm $spacing-md;
+      width: 100%;
+      border-radius: $border-radius-md;
+      border: 1px solid $border-light;
+      font-size: $font-size-md;
+      color: $text-primary;
+
+      &:focus {
+        border-color: $brand-primary;
+        outline: none;
+      }
+    }
+  }
+
+  // Filter buttons (e.g., dropdown or sorting options)
+  &__buttons {
+    display: flex;
+    gap: $spacing-md;
+
+    button {
+      @include button-layout;
+      @include button-typography;
+      background-color: $neutral-light;
+      color: $text-primary;
+      border: 1px solid $border-light;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-md;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $neutral-dark;
+        color: $neutral-white;
+      }
+    }
+  }
+}
