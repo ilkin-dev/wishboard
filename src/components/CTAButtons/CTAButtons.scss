@@ -1,33 +1,57 @@
 @use "../../styles/colors" as *;
 @use "../../styles/spacing" as *;
 @use "../../styles/typography" as *;
-@use "../../styles/breakpoints" as *;
-@use "../../styles/components" as *;
 
-.cta {
+.cta-buttons {
   display: flex;
-  gap: $spacing-sm;
+  align-items: center;
 
-  @include md-up {
-    gap: $spacing-md;
-  }
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: $spacing-md;
 
-  &__button {
-    @include button-primary;
-
-    &--login {
-      background-color: $brand-tertiary;
-
-      &:hover {
-        background-color: $hover-tertiary;
-      }
+    &-container {
+      position: relative;
     }
+    &-dropdown {
+      position: absolute;
+      top: calc(100% + $spacing-sm);
+      right: 0;
+      background-color: $neutral-light;
+      border: 1px solid $neutral-light;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: $spacing-xs;
+      z-index: 100;
 
-    &--create-board {
-      background-color: $brand-secondary;
+      &__item {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: $spacing-sm $spacing-md;
+        color: $text-primary;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: $font-size-md;
+        transition: background-color 0.3s;
 
-      &:hover {
-        background-color: $hover-secondary;
+        &:hover {
+          background-color: $highlight-primary;
+          color: $neutral-light;
+        }
+
+        &:first-of-type {
+          border-top-left-radius: $spacing-xs;
+          border-top-right-radius: $spacing-xs;
+        }
+
+        &:last-of-type {
+          border-bottom-left-radius: $spacing-xs;
+          border-bottom-right-radius: $spacing-xs;
+          text-wrap: nowrap;
+        }
       }
     }
   }
