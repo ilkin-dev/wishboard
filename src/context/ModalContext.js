@@ -1,32 +1,40 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// Create Modal Context
 const ModalContext = createContext();
 
-// Custom hook to use the modal context
-export const useModal = () => useContext(ModalContext);
-
-// Modal Provider Component
 export const ModalProvider = ({ children }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState(null);
-    const [modalInfo, setModalInfo] = useState(''); // New state for holding modal info
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = (content, info = '') => { // Accept info as an optional parameter
-        setModalContent(content);
-        setModalInfo(info); // Set modal info dynamically
-        setIsModalOpen(true);
+    const openModal = (content) => {
+        if (React.isValidElement(content)) {
+            setModalContent(content);
+            setIsModalOpen(true);
+        } else {
+            console.error('Modal content must be a valid React element.');
+        }
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
         setModalContent(null);
-        setModalInfo(''); // Reset modal info
     };
 
     return (
-        <ModalContext.Provider value={{ isModalOpen, modalContent, modalInfo, openModal, closeModal }}>
+        <ModalContext.Provider value={{ openModal, closeModal }}>
             {children}
+            {isModalOpen && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        {modalContent}
+                        <button onClick={closeModal} className="modal-close-button">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </ModalContext.Provider>
     );
 };
+
+export const useModal = () => useContext(ModalContext);
