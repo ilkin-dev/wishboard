@@ -5,61 +5,28 @@
 @use "../../styles/components" as *;
 
 .explore-page {
-  background-color: $background-light;
-
-  // Hero section styling
-  &__hero {
-    background-color: $brand-secondary;
-    padding: $spacing-lg 0;
+  &__title {
     text-align: center;
-    color: $neutral-white;
-
-    &__title {
-      @include heading-style($font-size-xxl, $line-height-lg);
-      color: $neutral-white;
-      margin-bottom: $spacing-md;
-    }
+    margin-bottom: $spacing-lg;
+    margin-top: $spacing-lg;
+    color: $text-primary;
   }
 
-  // Filters section styling
-  .filters {
-    margin: $spacing-md auto;
-    padding: $spacing-sm;
-    max-width: 800px;
-    background-color: $neutral-light;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: $border-radius-md;
-    display: flex;
-    justify-content: center;
-    gap: $spacing-md;
-
-    input[type="text"] {
-      padding: $spacing-sm;
-      border-radius: $border-radius-sm;
-      width: 100%;
-      max-width: 300px;
-      border: 1px solid $border-light;
-      &:focus {
-        outline: none;
-        border-color: $highlight-primary;
-      }
-    }
-  }
-
-  // Boards grid section styling
   &__boards {
-    padding: $spacing-lg 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: $spacing-lg;
+    grid-template-columns: repeat(1, 1fr);
     gap: $spacing-lg;
-    max-width: 1200px;
-    margin: 0 auto;
+
+    @include md-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  // Loading section styling
   &__loading {
     text-align: center;
-    padding: $spacing-lg;
+    font-size: $font-size-lg;
     color: $text-secondary;
+    margin-top: $spacing-md;
   }
 }

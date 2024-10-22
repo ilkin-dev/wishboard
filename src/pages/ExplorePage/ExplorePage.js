@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './ExplorePage.scss';
-import HeaderSection from '../../components/Header/HeaderSection';
-import FooterSection from '../../components/FooterSection/FooterSection';
 import BoardCard from '../../components/BoardCard/BoardCard';
 import Filters from '../../components/Filters/Filters';
 import useInfiniteScroll from '../../hooks/UseInfiniteScroll';
+import HeaderSection from '../../components/Header/HeaderSection'; // Reused Header
+import FooterSection from '../../components/FooterSection/FooterSection';
 
 // Static array for boards
 const initialBoards = [
@@ -43,8 +43,8 @@ const initialBoards = [
 const ExplorePage = () => {
     const [hasMore, setHasMore] = useState(true);
     const [filters, setFilters] = useState({});
-    const [boards, setBoards] = useState(initialBoards.slice(0, 6)); // Display first 6 boards initially
 
+    const [boards, setBoards] = useState(initialBoards.slice(0, 6)); // Display first 6 boards initially
     const fetchMoreBoards = () => {
         const nextBoards = initialBoards.slice(boards.length, boards.length + 6); // Load 6 more boards
         setBoards((prevBoards) => [...prevBoards, ...nextBoards]);
@@ -58,19 +58,15 @@ const ExplorePage = () => {
 
     return (
         <div className="explore-page">
-            <HeaderSection /> {/* Add the same Header */}
-            <main>
-                <section className="explore-page__hero">
-                    <h1 className="explore-page__title">Explore Wishboards</h1>
-                </section>
-                <Filters filters={filters} setFilters={setFilters} />
-                <section className="explore-page__boards">
-                    {boards.map((board) => (
-                        <BoardCard key={board.id} board={board} />
-                    ))}
-                </section>
-                {hasMore && <div className="explore-page__loading">Loading more boards...</div>}
-            </main>
+            <HeaderSection />
+            <h1 className="explore-page__title">Explore Wishboards</h1>
+            <Filters filters={filters} setFilters={setFilters} />
+            <div className="explore-page__boards">
+                {boards.map((board) => (
+                    <BoardCard key={board.id} board={board} />
+                ))}
+            </div>
+            {hasMore && <div className="explore-page__loading">Loading more boards...</div>}
             <FooterSection />
         </div>
     );
