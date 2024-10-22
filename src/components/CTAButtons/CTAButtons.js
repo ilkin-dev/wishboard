@@ -12,8 +12,7 @@ const CTAButtons = () => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const handleLoginClick = (e) => {
-        e.preventDefault();
+    const handleLoginClick = () => {
         openModal(<LoginModal />);
     };
 
@@ -21,8 +20,7 @@ const CTAButtons = () => {
         if (!user) {
             handleLoginClick();
         } else {
-            console.log('User is logged in, create board logic can proceed...');
-            // logic for creating a new board, e.g., opening a create board modal
+            navigate("/createBoard");
         }
     };
 
