@@ -1,31 +1,59 @@
-import React from 'react';
-import GoalBox from '../GoalBox/GoalBox';  // A reusable goal box component
+import React, { useState } from 'react';
+import GoalBox from '../GoalBox/GoalBox';
 import './GoalBoxCarousel.scss';
 
-const GoalBoxCarousel = ({ goals }) => {
-    // Logic for handling carousel scrolling, limiting items shown
-    const goalBoxLimit = 6; // Limit number of visible goal boxes
+const isSameDay = (date1, date2) => {
+    return (
+        date1.getFullYear() === date2.getFullYear() &&
+        date1.getMonth() === date2.getMonth() &&
+        date1.getDate() === date2.getDate()
+    );
+};
 
-    const limitedGoals = goals.slice(0, goalBoxLimit);  // Limit number of goals
+const GoalBoxCarousel = ({ days, goals }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const itemsPerPage = 9;  // Show 9 goal boxes at once
+
+    // Function to handle next set of goal boxes
+    const nextPage = () => {
+        if (currentIndex + itemsPerPage < days.length) {
+            setCurrentIndex(currentIndex + itemsPerPage);
+        }
+    };
+
+    // Function to handle previous set of goal boxes
+    const prevPage = () => {
+        if (currentIndex - itemsPerPage >= 0) {
+            setCurrentIndex(currentIndex - itemsPerPage);
+        }
+    };
+
+    // Create goal boxes for the current view
+    const displayedDays = days.slice(currentIndex, currentIndex + itemsPerPage);
+
+    const today = new Date();  // Get today's date
 
     return (
         <div className="goal-box-carousel">
-            {limitedGoals.length > 0 ? (
-                <div className="goal-box-carousel__grid">
-                    {limitedGoals.map((goal, index) => (
-                        <GoalBox key={index} goal={goal} day={index + 1} />
-                    ))}
-                </div>
-            ) : (
-                <p>No goals available</p>
-            )}
+            <button onClick={prevPage} className="goal-box-carousel__arrow">&lt;</button>
+            <div className="goal-box-carousel__container">
+                {displayedDays.map((day, index) => {
+                    const goalForDay = goals.find(goal => new Date(goal.deadline).toDateString() === day.toDateString());
+                    const isPassedDay = day < today;
+                    const isCurrentDay = isSameDay(day, today);
 
-            {goals.length > goalBoxLimit && (
-                <div className="goal-box-carousel__navigation">
-                    <button className="goal-box-carousel__prev">←</button>
-                    <button className="goal-box-carousel__next">→</button>
-                </div>
-            )}
+                    return (
+                        <GoalBox
+                            key={index}
+                            day={day}
+                            goal={goalForDay}  // This could be null if no goal exists for that day
+                            isPassedDay={isPassedDay}
+                            isCurrentDay={isCurrentDay}
+                        />
+                    );
+                })}
+            </div>
+            <button onClick={nextPage} className="goal-box-carousel__arrow">&gt;</button>
         </div>
     );
 };
