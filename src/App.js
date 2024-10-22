@@ -1,24 +1,27 @@
-import './App.css';
-import HomePage from './pages/HomePage/HomePage';
 import React from 'react';
-import GoogleAuthProviderWrapper from './context/GoogleAuthProvider';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.scss';
+import HomePage from './pages/HomePage/HomePage';
+import ExplorePage from './pages/ExplorePage/ExplorePage';
 import Modal from './components/Modal/Modal';
+import GoogleAuthProviderWrapper from './context/GoogleAuthProvider';
 import { ModalProvider } from './context/ModalContext';
-import { BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter
+import DashboardPage from './pages/DashboardPage/DashboardPage';
 
 function App() {
-
   return (
-    <div className="App">
+    <Router>
       <GoogleAuthProviderWrapper>
         <ModalProvider>
-          <Router>
-            <HomePage />
-            <Modal />
-          </Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/explore" element={<ExplorePage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Routes>
+          <Modal />
         </ModalProvider>
       </GoogleAuthProviderWrapper>
-    </div>
+    </Router>
   );
 }
 

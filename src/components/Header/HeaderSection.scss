@@ -28,13 +28,13 @@
     &--open {
       display: block;
       position: absolute;
-      top: 135%;
+      top: 145%;
       right: 0;
       left: 0;
-      background-color: $background-base;
+      background-color: $brand-primary;
       padding: $spacing-md;
       animation: slideIn 0.3s ease forwards;
-      box-shadow: 0 4px 10px rgba($neutral-black, 0.1);
+      box-shadow: 4px 4px 4px 10px rgba($neutral-black, 0.1);
       z-index: 100;
     }
   }

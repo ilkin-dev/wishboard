@@ -10,9 +10,8 @@
   margin-bottom: $spacing-lg;
   border-radius: $border-radius-md;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: $spacing-lg;
+  margin-right: $spacing-lg;
   display: flex;
   align-items: center;
   justify-content: space-between;
