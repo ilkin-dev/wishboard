@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 import NavLinks from '../NavLinks/NavLinks';
 import CTAButtons from '../CTAButtons/CTAButtons';
 
-const HeaderSection = () => {
+const HeaderSection = ({ scrollToSection }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -16,7 +16,7 @@ const HeaderSection = () => {
             <div className="header__container">
                 <Logo />
                 <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
-                    <NavLinks />
+                    <NavLinks scrollToSection={scrollToSection} />
                 </nav>
                 <CTAButtons />
                 <button className="header__burger" onClick={toggleMenu}>

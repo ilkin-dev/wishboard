@@ -1,14 +1,15 @@
 import React from 'react';
 import './NavLinks.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 import { useAuth } from '../../context/AuthContext';  // Import the auth context
 import LoginModal from '../LoginModal/LoginModal';
 
-const NavLinks = () => {
+const NavLinks = ({ scrollToSection }) => {
     const { openModal } = useModal();
     const { user } = useAuth();  // Get the logged-in user
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleDashboardClick = (e) => {
         e.preventDefault();
@@ -24,26 +25,31 @@ const NavLinks = () => {
         }
     };
 
+    const handleAboutClick = (e) => {
+        e.preventDefault();
+
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: 'about' } });
+        } else {
+            scrollToSection('about');
+        }
+    };
+
     return (
         <nav className="nav">
             <ul className="nav__list">
                 <li className="nav__item">
-                    <NavLink to="/about" className="nav__link" activeClassName="active">
+                    <NavLink to="/#about">
                         About
                     </NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink to="/explore" className="nav__link" activeClassName="active">
+                    <NavLink to="/explore" className="nav__link">
                         Explore
                     </NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink
-                        to="/dashboard"
-                        className="nav__link"
-                        activeClassName="active"
-                        onClick={handleDashboardClick}
-                    >
+                    <NavLink to="/dashboard" className="nav__link" onClick={handleDashboardClick}>
                         Dashboard
                     </NavLink>
                 </li>
