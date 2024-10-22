@@ -3,44 +3,24 @@ import apiClient from '../../api/axios';
 import './ExplorePage.scss';
 import BoardCard from '../../components/BoardCard/BoardCard';
 import Filters from '../../components/Filters/Filters';
-import useInfiniteScroll from '../../hooks/UseInfiniteScroll';
 import HeaderSection from '../../components/Header/HeaderSection';
 import FooterSection from '../../components/FooterSection/FooterSection';
+import WishboardModal from '../../components/WishboardModal/WishboardModal';
 
 const ExplorePage = () => {
-    const [hasMore, setHasMore] = useState(true);
     const [filters, setFilters] = useState({});
     const [boards, setBoards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedBoard, setSelectedBoard] = useState(null);  // Track selected board for modal
 
-    // Utility function to remove duplicates based on `id`
-    const removeDuplicates = (newBoards) => {
-        const boardIds = new Set(boards.map((board) => board.id));
-        return newBoards.filter((board) => !boardIds.has(board.id));
-    };
-
+    // Fetch all wishboards without pagination or infinite scroll
     const fetchBoards = async () => {
         try {
-            const response = await apiClient.get('/wishboards/paginate', {
-                params: {
-                    start: boards.length,
-                    limit: 6,
-                },
-            });
-
+            const response = await apiClient.get('/wishboards'); // Fetch all boards at once
             const newBoards = response.data || [];
 
-            if (newBoards.length === 0) {
-                setHasMore(false); // If no more boards, stop further loading
-            }
-
-            const filteredBoards = removeDuplicates(newBoards); // Remove duplicates before setting state
-
-            if (filteredBoards.length > 0) {
-                setBoards((prevBoards) => [...prevBoards, ...filteredBoards]);
-            }
-
+            setBoards(newBoards);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching wishboards:', error);
@@ -49,10 +29,8 @@ const ExplorePage = () => {
         }
     };
 
-    useInfiniteScroll(fetchBoards, hasMore);
-
     useEffect(() => {
-        fetchBoards();
+        fetchBoards(); // Fetch all boards once when the component mounts
     }, []);
 
     if (loading) return <p>Loading wishboards...</p>;
@@ -64,11 +42,32 @@ const ExplorePage = () => {
             <h1 className="explore-page__title">Explore Wishboards</h1>
             <Filters filters={filters} setFilters={setFilters} />
             <div className="explore-page__boards">
-                {boards.map((board) => (
-                    <BoardCard key={board.id} board={board} />
-                ))}
+                {boards.length > 0 ? (
+                    boards.map((board) => (
+                        <BoardCard
+                            key={board.id}
+                            board={{
+                                thumbnail: board.thumbnail,
+                                title: board.title,
+                                username: board.username,
+                                createdDate: new Date(board.created_at).toLocaleDateString(),
+                                deadlineDate: new Date(board.deadline).toLocaleDateString(),
+                                progress: board.progress,
+                            }}
+                            onClick={() => setSelectedBoard(board)}  // Open modal on click
+                            editable={false}
+                        />
+                    ))
+                ) : (
+                    <p>No boards available</p>
+                )}
+                {selectedBoard && (
+                    <WishboardModal
+                        board={selectedBoard}
+                        closeModal={() => setSelectedBoard(null)}  // Close modal
+                    />
+                )}
             </div>
-            {hasMore && <div className="explore-page__loading">Loading more boards...</div>}
             <FooterSection />
         </div>
     );
