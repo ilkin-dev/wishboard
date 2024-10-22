@@ -26,29 +26,23 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (googleToken) => {
-
         if (googleToken) {
             try {
-                await apiClient.post('/auth/google-auth', { token: googleToken });
-                const decodedToken = jwtDecode(googleToken);
-                setUser({
-                    name: decodedToken.name,
-                    email: decodedToken.email,
-                    profilePicture: decodedToken.picture,
-                });
-                localStorage.setItem('jwtToken', googleToken);
-                apiClient.defaults.headers['Authorization'] = `Bearer ${googleToken}`;
+                const response = await apiClient.post('/auth/google-auth', { token: googleToken });
+                const { token, user } = response.data;
+
+                setUser(user);
+                localStorage.setItem('jwtToken', token);
+                apiClient.defaults.headers['Authorization'] = `Bearer ${token}`;
             } catch (error) {
-                console.error('Failed to login with Google:', error);
+                console.error('Failed to decode token:', error);
             }
         }
     };
 
-
     const logout = () => {
         setUser(null);
         localStorage.removeItem('jwtToken');
-        delete apiClient.defaults.headers['Authorization'];
     };
 
     return (
