@@ -1,21 +1,15 @@
 import React from 'react';
 import './NavLinks.scss';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
-import { GoogleLogin } from '@react-oauth/google';
+import LoginModal from '../LoginModal/LoginModal';
 
 const NavLinks = () => {
-    const location = useLocation();
     const { openModal } = useModal();
 
     const handleDashboardClick = (e) => {
         e.preventDefault();
-        openModal(
-            <GoogleLogin
-                onSuccess={(response) => console.log('Login Success', response)}
-                onError={() => console.log('Login Failed')}
-            />, 'Please sign in to access the dashboard.'
-        );
+        openModal(<LoginModal />);
     };
 
     return (
@@ -32,7 +26,7 @@ const NavLinks = () => {
                     </NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink to="/dashboard" className="nav__link" activeClassName="active">
+                    <NavLink to="/dashboard" className="nav__link" activeClassName="active" onClick={handleDashboardClick}>
                         Dashboard
                     </NavLink>
                 </li>
