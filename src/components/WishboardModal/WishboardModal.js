@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './WishboardModal.scss';
-import GoalBoxCarousel from '../GoalBoxCarousel/GoalBoxCarousel'; // A reusable carousel component
 import apiClient from '../../api/axios';
+import './WishboardModal.scss';
+import GoalBoxCarousel from '../GoalBoxCarousel/GoalBoxCarousel';
 
 const WishboardModal = ({ board, closeModal }) => {
     const [goals, setGoals] = useState([]);
+    const [days, setDays] = useState([]);
 
     useEffect(() => {
         const fetchGoals = async () => {
@@ -16,8 +17,20 @@ const WishboardModal = ({ board, closeModal }) => {
             }
         };
 
+        // Generate all days between created_at and deadline
+        const generateDays = () => {
+            const startDate = new Date(board.created_at);
+            const endDate = new Date(board.deadline);
+            const dayList = [];
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                dayList.push(new Date(d));
+            }
+            setDays(dayList);
+        };
+
+        generateDays();
         fetchGoals();
-    }, [board.id]);
+    }, [board.id, board.created_at, board.deadline]);
 
     return (
         <div className="wishboard-modal">
@@ -33,7 +46,8 @@ const WishboardModal = ({ board, closeModal }) => {
                     <p><strong>Description:</strong> {board.description}</p>
                 </div>
 
-                <GoalBoxCarousel goals={goals} />
+                {/* Pass limited days and goals to the carousel */}
+                <GoalBoxCarousel days={days} goals={goals} />
             </div>
         </div>
     );
