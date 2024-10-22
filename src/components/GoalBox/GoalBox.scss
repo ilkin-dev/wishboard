@@ -1,0 +1,25 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+
+.goal-box {
+  width: 60px;
+  height: 60px;
+  background-color: $neutral-light;
+  border-radius: $border-radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &__content {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: $highlight-primary;
+    color: $neutral-white;
+  }
+}
