@@ -4,13 +4,15 @@ import BoardCard from '../../components/BoardCard/BoardCard';
 import HeaderSection from '../../components/Header/HeaderSection';
 import FooterSection from '../../components/FooterSection/FooterSection';
 import './DashboardPage.scss';
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode'; // Ensure correct import without curly braces
+import WishboardModal from '../../components/WishboardModal/WishboardModal';
 
 const DashboardPage = () => {
     const [userProfile, setUserProfile] = useState(null);
     const [boards, setBoards] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedBoard, setSelectedBoard] = useState(null);  // Track selected board for modal
 
     useEffect(() => {
         const jwtToken = localStorage.getItem('jwtToken');
@@ -24,6 +26,7 @@ const DashboardPage = () => {
         } catch (error) {
             console.error('Invalid token:', error);
         }
+
         // Fetch the user's wishboards
         const fetchUserBoards = async () => {
             try {
@@ -51,19 +54,45 @@ const DashboardPage = () => {
             <HeaderSection />
             <section className="dashboard-page__profile">
                 <div className="dashboard-page__profile__wrapper">
-                    <img src={userProfile.profilePicture} alt={`${userProfile.name}'s profile`} className="dashboard-page__profile__image" />
+                    <img
+                        src={userProfile?.profilePicture || '/default-avatar.png'}
+                        alt={`${userProfile?.name}'s profile`}
+                        className="dashboard-page__profile__image"
+                    />
                     <div className="dashboard-page__profile__info">
-                        <h2 className="dashboard-page__profile__name">{userProfile.name}</h2>
-                        <p className="dashboard-page__profile__email">{userProfile.email}</p>
+                        <h2 className="dashboard-page__profile__name">{userProfile?.name}</h2>
+                        <p className="dashboard-page__profile__email">{userProfile?.email}</p>
                     </div>
                 </div>
             </section>
             <section className="dashboard-page__boards">
                 <h2 className="dashboard-page__boards__title">Your Wishboards</h2>
                 <div className="dashboard-page__boards__grid">
-                    {boards.map((board) => (
-                        <BoardCard key={board.id} board={board} editable />
-                    ))}
+                    {boards.length > 0 ? (
+                        boards.map((board) => (
+                            <BoardCard
+                                key={board.id}
+                                board={{
+                                    thumbnail: board.thumbnail,
+                                    title: board.title,
+                                    username: board.username,
+                                    createdDate: new Date(board.created_at).toLocaleDateString(),
+                                    deadlineDate: new Date(board.deadline).toLocaleDateString(),
+                                    progress: board.progress,
+                                }}
+                                onClick={() => setSelectedBoard(board)}  // Open modal on click
+                                editable={true}
+                            />
+                        ))
+                    ) : (
+                        <p>No boards available</p>
+                    )}
+                    {selectedBoard && (
+                        <WishboardModal
+                            board={selectedBoard}
+                            closeModal={() => setSelectedBoard(null)}  // Close modal
+                        />
+                    )}
                 </div>
             </section>
             <FooterSection />
