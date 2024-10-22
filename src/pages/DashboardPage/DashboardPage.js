@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './DashboardPage.scss';
 import HeaderSection from '../../components/Header/HeaderSection';
 import BoardCard from '../../components/BoardCard/BoardCard';
-import { userBoards, userProfile } from '../../data/mockData';
 import FooterSection from '../../components/FooterSection/FooterSection';
-import IconButton from '../../components/IconButton/IconButton';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { userBoards } from '../../data/mockData';
+import { jwtDecode } from 'jwt-decode';
 
 const DashboardPage = () => {
-    const { name, email, profilePicture } = userProfile;
+    const [userProfile, setUserProfile] = useState(null);
+
+    useEffect(() => {
+        const jwtToken = localStorage.getItem('jwtToken');
+        if (jwtToken) {
+            try {
+                const decodedToken = jwtDecode(jwtToken);
+                setUserProfile({
+                    name: decodedToken.name,
+                    email: decodedToken.email,
+                    profilePicture: decodedToken.picture,
+                });
+            } catch (error) {
+                console.error('Invalid token:', error);
+            }
+        }
+    }, []);
+
+    if (!userProfile) {
+        return <div>Loading...</div>; // Wait until user profile is loaded
+    }
 
     return (
         <div className="dashboard-page">
             <HeaderSection />
             <section className="dashboard-page__profile">
                 <div className="dashboard-page__profile__wrapper">
-                    <img src={profilePicture} alt={`${name}'s profile`} className="dashboard-page__profile__image" />
+                    <img src={userProfile.profilePicture} alt={`${userProfile.name}'s profile`} className="dashboard-page__profile__image" />
                     <div className="dashboard-page__profile__info">
-                        <h2 className="dashboard-page__profile__name">{name}</h2>
-                        <p className="dashboard-page__profile__email">{email}</p>
-                        <IconButton icon={faEdit} onClick={() => console.log('Edit board clicked')} size="small" color="primary" />
+                        <h2 className="dashboard-page__profile__name">{userProfile.name}</h2>
+                        <p className="dashboard-page__profile__email">{userProfile.email}</p>
                     </div>
                 </div>
             </section>
