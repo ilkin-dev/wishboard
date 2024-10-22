@@ -1,9 +1,8 @@
-import React from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const GoogleAuthProviderWrapper = ({ children }) => {
     return (
-        <GoogleOAuthProvider clientId="665690023472-iu72oi19rl9mf532s8p6eot6t6m5k2m5.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="665690023472-571g4sim0ie57jo8e9slo1dmlf0rnada.apps.googleusercontent.com">
             {children}
         </GoogleOAuthProvider>
     );
