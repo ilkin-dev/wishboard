@@ -13,7 +13,7 @@ const BoardsSection = () => {
         // Fetch boards from the back-end API
         const fetchBoards = async () => {
             try {
-                const response = await apiClient.get('/wishboards/');  // Fetch the boards
+                const response = await apiClient.get('/wishboards');  // Fetch the boards
                 setBoards(response.data || []);  // Ensure that we set boards to an empty array if undefined
                 setLoading(false);
             } catch (error) {
@@ -41,7 +41,7 @@ const BoardsSection = () => {
                             board={{
                                 thumbnail: board.thumbnail, // Replace this with the actual field from the API
                                 title: board.title,
-                                username: board.username,  // Assuming the backend provides the username
+                                username: board.username,  // Now using the username from the API
                                 createdDate: new Date(board.created_at).toLocaleDateString(),  // Adjust for your date format
                                 deadlineDate: new Date(board.deadline).toLocaleDateString(),  // Replace with the actual deadline field
                                 progress: board.progress,  // Assuming progress is a percentage
@@ -57,7 +57,6 @@ const BoardsSection = () => {
                 </NavLink>
             </div>
         </section>
-
     );
 };
 
