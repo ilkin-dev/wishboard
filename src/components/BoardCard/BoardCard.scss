@@ -5,85 +5,79 @@
 
 .board-card {
   background-color: $neutral-white;
-  border-radius: $border-radius-lg;
-  overflow: hidden;
+  border-radius: $border-radius-md;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   }
 
   &__thumbnail {
-    background-size: cover;
-    background-position: center;
-    height: 150px;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
   }
 
-  &__info {
-    padding: $spacing-lg;
-
-    &__title {
-      font-size: $font-size-lg;
-      font-weight: $font-weight-bold;
-      color: $text-primary;
-      margin-bottom: $spacing-sm;
-    }
-
-    &__user {
-      font-size: $font-size-md;
-      color: $text-secondary;
-      display: flex;
-      align-items: center;
-      gap: $spacing-xs;
-
-      .board-card__icon {
-        color: $highlight-primary;
-      }
-    }
-
-    &__dates {
-      margin-top: $spacing-md;
-      display: flex;
-      justify-content: space-between;
-      font-size: $font-size-sm;
-      color: $text-muted;
-
-      &__block {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        &__label {
-          font-weight: $font-weight-medium;
-          color: $text-primary;
-          font-size: $font-size-sm;
-        }
-
-        &__created,
-        &__deadline {
-          font-size: $font-size-sm;
-          font-style: italic;
-          color: $text-muted;
-        }
-      }
-    }
-  }
-
-  &__progress {
+  &__content {
     padding: $spacing-md;
+  }
 
-    &__bar {
-      height: 8px;
-      background-color: $neutral-light;
-      border-radius: $border-radius-sm;
-      overflow: hidden;
+  &__title {
+    font-size: $font-size-lg;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+  }
 
-      &__fill {
-        height: 100%;
-        background-color: $brand-primary;
-        border-radius: inherit;
+  &__username {
+    color: $highlight-primary;
+    font-size: $font-size-md;
+    margin-bottom: $spacing-md;
+  }
+
+  &__dates {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+
+    .board-card__date {
+      font-weight: bold;
+      color: $text-primary;
+    }
+  }
+
+  &__progress-bar {
+    background-color: $background-dark;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &__fill {
+      height: 100%;
+      background-color: $brand-secondary;
+      width: 0;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+
+    .board-card__button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: $font-size-lg;
+      color: $brand-primary;
+
+      &:hover {
+        color: $highlight-primary;
       }
     }
   }

@@ -1,54 +1,41 @@
-import React from "react";
+import React from 'react';
 import './BoardCard.scss';
+import IconButton from '../IconButton/IconButton';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-const BoardCard = ({ board }) => {
-    const { title, username, createdDate, deadlineDate, progress, thumbnail } = board;
-
+const BoardCard = ({ board, editable }) => {
     return (
         <div className="board-card">
-            <div
-                className="board-card__thumbnail"
-                style={{ backgroundImage: `url(${thumbnail})` }}
-            ></div>
-
-            <div className="board-card__info">
-                <h3 className="board-card__info__title">{title}</h3>
-                <p className="board-card__info__user">
-                    <span className="board-card__icon">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            width="10"
-                            height="10"
-                        >
-                            <circle cx="12" cy="12" r="8" fill="currentColor" />
-                        </svg>
+            <img src={board.thumbnail} alt={board.title} className="board-card__thumbnail" />
+            <div className="board-card__content">
+                <h3 className="board-card__title">{board.title}</h3>
+                {!editable &&
+                    (<p className="board-card__username">
+                        <span className="board-card__icon">•</span> {board.username}
+                    </p>)
+                }
+                < p className="board-card__dates">
+                    <span className="board-card__date">
+                        <strong>Start:</strong> {board.createdDate}
                     </span>
-                    {username}
+                    <span className="board-card__date">
+                        <strong>Due:</strong> {board.deadlineDate}
+                    </span>
                 </p>
-
-                <div className="board-card__info__dates">
-                    <div className="board-card__info__dates__block">
-                        <span className="board-card__info__dates__label">Start:</span>
-                        <span className="board-card__info__dates__created">{createdDate}</span>
-                    </div>
-
-                    <div className="board-card__info__dates__block">
-                        <span className="board-card__info__dates__label">Due:</span>
-                        <span className="board-card__info__dates__deadline">{deadlineDate}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="board-card__progress">
-                <div className="board-card__progress__bar">
+                <div className="board-card__progress-bar">
                     <div
-                        className="board-card__progress__bar__fill"
-                        style={{ width: `${progress}%` }}
+                        className="board-card__progress-bar__fill"
+                        style={{ width: `${board.progress}%` }}
                     ></div>
                 </div>
+                {editable && (
+                    <div className="board-card__actions">
+                        <IconButton icon={faEdit} onClick={() => console.log('Edit board clicked')} size="small" color="primary" />
+                        <IconButton icon={faTrashAlt} onClick={() => console.log('Delete board clicked')} size="small" color="danger" />
+                    </div>
+                )}
             </div>
-        </div>
+        </div >
     );
 };
 
