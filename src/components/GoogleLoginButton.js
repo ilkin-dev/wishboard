@@ -6,7 +6,8 @@ const GoogleLoginButton = ({ onLoginSuccess, onLoginError }) => {
     const { login } = useAuth();  // Get the login function from AuthContext
 
     const handleLoginSuccess = (response) => {
-        login(response.credential);  // Call login from AuthContext
+        console.log('Google Token:', response.credential);
+        login(response.credential);  // Call login from AuthContext to handle token exchange
         if (onLoginSuccess) onLoginSuccess();  // Call any additional logic passed via props (e.g., closing the modal)
     };
 
