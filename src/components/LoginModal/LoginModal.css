@@ -172,15 +172,6 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -198,7 +189,7 @@ p {
   width: 90%;
   max-width: 400px;
   position: relative;
-  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 768px) {
   .modal-overlay .modal-content {
@@ -233,6 +224,11 @@ p {
   right: 1rem;
   background: transparent;
   border: none;
+  color: #000000;
   font-size: 1.25rem;
-  cursor: pointer;
+}
+.modal-overlay .modal-content .google-login {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }

@@ -6,7 +6,6 @@
 @use "../../styles/components" as *;
 
 .modal-overlay {
-  @include modal-overlay;
   position: fixed; // Ensure the modal overlay covers the entire screen
   top: 0;
   left: 0;
@@ -26,7 +25,7 @@
     width: 90%;
     max-width: 400px;
     position: relative;
-    border-radius: $spacing-sm; // Add some border-radius for better aesthetics
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Optional shadow for better UI
 
     @include md-up {
       padding: $spacing-xl;
@@ -52,16 +51,16 @@
       position: absolute;
       top: $spacing-sm;
       right: $spacing-sm;
-      background: transparent;
+      background: transparent; // Ensure it's consistent with the overall theme
       border: none;
+      color: $text-primary; // Set color matching the design
       font-size: $font-size-lg;
-      cursor: pointer;
     }
 
-    // .google-login {
-    //   display: flex;
-    //   justify-content: center;
-    //   margin-top: $spacing-lg;
-    // }
+    .google-login {
+      display: flex;
+      justify-content: center;
+      margin-top: $spacing-lg;
+    }
   }
 }
