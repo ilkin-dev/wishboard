@@ -1,6 +1,6 @@
 import React from 'react';
 import { useModal } from '../../context/ModalContext';
-import './Modal.scss'; // Assuming you're styling the modal separately
+import './Modal.scss';
 
 const Modal = () => {
     const { isModalOpen, modalContent, modalInfo, closeModal } = useModal();
@@ -11,8 +11,8 @@ const Modal = () => {
         <div className="modal-overlay" onClick={closeModal}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close" onClick={closeModal}>X</button>
-                {modalInfo && <p className="modal-info">{modalInfo}</p>} {/* Dynamically display info */}
-                {modalContent} {/* Render the dynamic content */}
+                {modalInfo && <p className="modal-info">{modalInfo}</p>}
+                {modalContent}
             </div>
         </div>
     );
