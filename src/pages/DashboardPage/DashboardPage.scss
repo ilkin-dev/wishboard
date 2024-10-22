@@ -1,0 +1,81 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/components" as *;
+@use "../../styles/breakpoints" as *;
+
+.dashboard-page {
+  &__profile {
+    background-color: $brand-quaternary;
+    color: $neutral-white;
+    text-align: center;
+    padding: $spacing-lg 0;
+    margin-bottom: $spacing-lg;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include md-up {
+        flex-direction: row;
+        padding: $spacing-lg;
+      }
+    }
+
+    &__image {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: $spacing-md;
+      @include md-up {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 0;
+      }
+    }
+
+    &__info {
+      text-align: center;
+
+      @include md-up {
+        text-align: left;
+        margin-left: $spacing-lg;
+      }
+    }
+
+    &__name {
+      font-size: $font-size-lg;
+      color: $neutral-white;
+      margin-bottom: $spacing-sm;
+    }
+
+    &__email {
+      font-size: $font-size-md;
+      color: $neutral-white;
+    }
+  }
+
+  &__boards {
+    padding: $spacing-lg 0;
+
+    &__title {
+      text-align: center;
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-xl;
+      color: $text-primary;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: $spacing-lg;
+      padding: $spacing-lg;
+
+      @include md-up {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
