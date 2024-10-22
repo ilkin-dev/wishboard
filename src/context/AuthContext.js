@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';  // Import JWT decode library
 
 const AuthContext = createContext();
 
@@ -8,39 +9,46 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Check if a JWT token is stored in localStorage on load
         const token = localStorage.getItem('jwtToken');
         if (token) {
-            const decodedToken = JSON.parse(atob(token.split('.')[1]));
-            setUser({
-                name: decodedToken.name,
-                email: decodedToken.email,
-                profilePicture: decodedToken.picture,
-            });
+            try {
+                const decodedToken = jwtDecode(token);
+                setUser({
+                    name: decodedToken.name,
+                    email: decodedToken.email,
+                    profilePicture: decodedToken.picture,
+                });
+            } catch (error) {
+                console.error('Failed to decode token:', error);
+            }
         }
     }, []);
 
     const login = (token) => {
         if (token) {
             try {
-                const decodedToken = JSON.parse(atob(token.split('.')[1]));
+                if (typeof token !== 'string') {
+                    throw new Error('Token must be a string');
+                }
+
+                const decodedToken = jwtDecode(token);  // Decode the token
+
                 setUser({
                     name: decodedToken.name,
                     email: decodedToken.email,
                     profilePicture: decodedToken.picture,
                 });
-                localStorage.setItem('jwtToken', token);
+                localStorage.setItem('jwtToken', token); // Store the token
             } catch (error) {
                 console.error('Failed to decode token:', error);
-                // Handle token decoding failure (e.g., show an error message)
             }
         } else {
             console.error('No token received');
-            // Handle missing token (e.g., show an error message)
         }
     };
 
     const logout = () => {
+        console.log('Logging out user...');
         setUser(null);
         localStorage.removeItem('jwtToken');
     };
