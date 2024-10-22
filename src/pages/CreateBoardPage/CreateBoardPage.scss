@@ -1,0 +1,33 @@
+@use "../../styles/colors" as *;
+@use "../../styles/spacing" as *;
+@use "../../styles/typography" as *;
+@use "../../styles/animations" as *;
+@use "../../styles/components" as *;
+@use "../../styles/breakpoints" as *;
+
+.create-board-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-main;
+
+  &__container {
+    background-color: $neutral-white;
+    padding: $spacing-lg;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+
+    @include md-up {
+      padding: $spacing-xl;
+    }
+  }
+
+  &__heading {
+    @include heading-style($font-size-xl, $line-height-lg);
+    margin-bottom: $spacing-md;
+    text-align: center;
+  }
+}
