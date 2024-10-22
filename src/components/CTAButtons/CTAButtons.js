@@ -2,57 +2,42 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import { useModal } from '../../context/ModalContext';
 import { useAuth } from '../../context/AuthContext';
-import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
+import LoginModal from '../LoginModal/LoginModal';
 import './CTAButtons.scss';
-
 const CTAButtons = () => {
     const { openModal } = useModal();
-    const { user, setUser } = useAuth(); // Use setUser to manage user logout
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const handleLoginClick = (e) => {
+        e.preventDefault();
+        openModal(<LoginModal />);
+    };
+
     const handleCreateBoardClick = () => {
         if (!user) {
-            openModal(
-                <GoogleLogin
-                    onSuccess={(response) => console.log('Login Success', response)}
-                    onError={() => console.log('Login Failed')}
-                />,
-                'You need to log in to create a new board'
-            );
+            handleLoginClick();
         } else {
+            console.log('User is logged in, create board logic can proceed...');
             // logic for creating a new board, e.g., opening a create board modal
         }
     };
 
-    const handleLoginClick = () => {
-        openModal(
-            <GoogleLogin
-                onSuccess={(response) => console.log('Login Success', response)}
-                onError={() => console.log('Login Failed')}
-            />,
-            'Login to Your Account'
-        );
-    };
-
-    // Toggle dropdown visibility for avatar
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
     };
 
-    // Navigate to profile page
     const handleProfileClick = () => {
         navigate('/dashboard');
         setIsDropdownOpen(false);
     };
 
-    // Handle log out
     const handleLogOut = () => {
-        setUser(null); // Clear user data
+        logout();
         setIsDropdownOpen(false);
-        localStorage.removeItem('jwtToken'); // Clear token from localStorage
         navigate('/');
     };
 
@@ -78,19 +63,11 @@ const CTAButtons = () => {
                     )}
                 </div>
             ) : (
-                <Button
-                    type="primary"
-                    size="medium"
-                    onClick={handleLoginClick}
-                >
+                <Button type="primary" size="medium" onClick={handleLoginClick}>
                     Login
                 </Button>
             )}
-            <Button
-                type="secondary"
-                size="medium"
-                onClick={handleCreateBoardClick}
-            >
+            <Button type="secondary" size="medium" onClick={handleCreateBoardClick}>
                 Create Board
             </Button>
         </div>
