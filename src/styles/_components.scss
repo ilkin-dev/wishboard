@@ -204,3 +204,23 @@
   font-size: $font-size-lg;
   cursor: pointer;
 }
+
+@mixin form-control {
+  width: 100%;
+  padding: $spacing-sm;
+  border: 1px solid $border-light;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-md;
+  color: $text-primary;
+
+  &:focus {
+    outline: none;
+    border-color: $highlight-primary;
+  }
+}
+
+@mixin input-textarea {
+  min-height: 100px;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+}
